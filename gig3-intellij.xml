@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Containers>
+  <TemplateURL>https://raw.githubusercontent.com/gigaguy/intellij-docker/master/gig3-intellij-.xml</TemplateURL>
+  <Beta>False</Beta>
+  <Category>Downloaders:</Category>
+  <Name>gig3-intellij</Name>
+  <Description>
+    [b][u][span style='color: #E80000;']Description[/span][/u][/b][br]
+    Test[br]
+    [b][u][span style='color: #E80000;']Configuration[/span][/u][/b][br]
+    [b]/root[/b] Roots Home[br]
+  </Description>
+  <Overview>
+    Gig3-Bastion
+  </Overview>
+  <Support>http://lime-technology.com/forum/index.php?topic=45843.0</Support>
+  <Registry>https://hub.docker.com/repository/docker/gigaguy/gig3-intellij/</Registry>
+  <GitHub>https://github.com/gigaguy/bastion</GitHub>
+  <Repository>gigaguy/gig3-intellij</Repository>
+  <Project>http://gig3.net/</Project>
+  <BindTime>true</BindTime>
+  <Privileged>false</Privileged>
+    <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>2222</HostPort>
+        <ContainerPort>22</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Environment>
+    <Variable>
+      <Name>UMASK</Name>
+      <Value>000</Value>
+    </Variable>
+    <Variable>
+      <Name>PUID</Name>
+      <Value>99</Value>
+    </Variable>
+    <Variable>
+      <Name>PGID</Name>
+      <Value>100</Value>
+    </Variable>
+  </Environment>
+  <Data>
+    <Volume>
+      <HostDir>$PWD/authorized_keys</HostDir>
+      <ContainerDir>/var/lib/bastion/authorized_keys</ContainerDir>
+      <Mode>ro</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>docker-ssh</HostDir>
+      <ContainerDir>/usr/etc/ssh</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <WebUI>http://[IP]:[PORT:6789]/</WebUI>
+  <Icon>https://raw.githubusercontent.com/binhex/docker-templates/master/binhex/images/nzbget-icon.png</Icon>
+  <DonateText>If you appreciate my work, then please consider buying me a beer :D</DonateText>
+  <DonateLink>https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=MM5E27UX6AUU4</DonateLink>
+  <DonateImg>https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif</DonateImg>
+  <ExtraParams></ExtraParams>
+</Containers>
