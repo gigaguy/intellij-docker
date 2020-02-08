@@ -25,48 +25,6 @@ ENV USER_NAME=${USER_NAME:-developer}
 ENV HOME=/home/${USER_NAME}
     
 #########################################################
-#### ---- Install Scala (included in Intellj already)----
-#########################################################
-#### ---- Universal tar.gz to install ----
-# ENV SCALA_INSTALL_BASE=/usr/local
-# WORKDIR ${SCALA_INSTALL_BASE}
-# # https://downloads.lightbend.com/scala/2.12.3/scala-2.12.3.tgz
-# # RUN wget -c https://downloads.lightbend.com/scala/2.12.3/scala-2.12.3.tgz && \
-# RUN wget -c https://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz && \
-#     tar xvf scala-${SCALA_VERSION}.tgz && \
-#     rm scala-${SCALA_VERSION}.tgz && \
-#     ls /usr/local && \
-#     echo "#!/bin/bash" > /etc/profile.d/scala.sh && \
-#     echo "export SCALA_VERSION=${SCALA_VERSION}" >> /etc/profile.d/scala.sh && \
-#     echo "export SCALA_HOME=${SCALA_INSTALL_BASE}/scala-${SCALA_VERSION}" >> /etc/profile.d/scala.sh && \
-#     echo "export PATH=${SCALA_INSTALL_BASE}/scala-${SCALA_VERSION}/bin:$PATH" >> /etc/profile.d/scala.sh && \
-#     echo "export CLASSPATH=\${SCALA_HOME}/lib:\$CLASSPATH" >> /etc/profile.d/scala.sh
-
-#### ---- Debian package to install ----
-#ENV SCALA_INSTALL_BASE=/usr/lib
-#WORKDIR ${SCALA_INSTALL_BASE}
-#RUN wget -c https://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.deb && \
-#    sudo apt-get install -y scala-${SCALA_VERSION}.deb && \
-#    rm scala-${SCALA_VERSION}.deb && \
-#    ls ${SCALA_INSTALL_BASE} && \
-#    echo "#!/bin/bash" > /etc/profile.d/scala.sh && \
-#    echo "export SCALA_VERSION=${SCALA_VERSION}" >> /etc/profile.d/scala.sh
-#    echo "export SCALA_HOME=/usr/lib/scala-${SCALA_VERSION}" >> /etc/profile.d/scala.sh
-#    echo "export PATH=${SCALA_INSTALL_BASE}/scala-${SCALA_VERSION}/bin:$PATH" >> /etc/profile.d/scala.sh
-#    echo "export CLASSPATH=\$SCALA_HOME/bin:\$CLASSPATH" >> /etc/profile.d/scala.sh
-
-##########################
-#### ---- Install sbt ----
-##########################
-# https://github.com/sbt/sbt/releases/download/v1.0.4/sbt-1.0.4.tgz
-# WORKDIR /tmp
-# RUN apt-get install -y apt-transport-https ca-certificates libcurl3-gnutls && \
-#     echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list && \
-#     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 && \
-#     apt-get update && \
-#     apt-get install -y sbt
-    
-#########################################################
 #### ---- Install IntelliJ IDE : MODIFY two lines below ----
 #########################################################
 
@@ -75,7 +33,8 @@ USER ${USER_NAME}
 WORKDIR ${HOME}
 
 # https://download.jetbrains.com/idea/ideaIC-2018.3.3-no-jdk.tar.gz
-ARG INTELLIJ_IDE_TAR=${INTELLIJ_VERSION}-no-jdk.tar.gz
+ARG INTELLIJ_IDE_TAR=ideaIC-2019.3.2.tar.gz
+#ARG INTELLIJ_IDE_TAR=${INTELLIJ_VERSION}-no-jdk.tar.gz
 ARG INTELLIJ_IDE_DOWNLOAD_FOLDER=idea
 
 ## -- (Release build) --
